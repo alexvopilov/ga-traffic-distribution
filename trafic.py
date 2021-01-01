@@ -41,3 +41,13 @@ class Traffic:
     
     def __repr__(self):
         return self.__str__()
+def cost(traffic, traffic_goal):
+    errors = traffic - traffic_goal
+    overtr = abs(errors[errors > 0].sum())
+    undertr = abs(errors[errors < 0].sum())
+    
+    overtr_c = 1
+    undertr_c = 1
+    
+    cost = overtr_c * overtr + undertr_c * undertr
+    return cost
