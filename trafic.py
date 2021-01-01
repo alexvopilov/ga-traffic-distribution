@@ -30,3 +30,14 @@ class Traffic:
     def toarray(self):
         return np.array(self.tolist())
             
+    def __str__(self):
+        r = []
+        for d in range(self.days):
+            r.append(f"Day {d+1}: ")
+            for t in self.tbuses:
+                r.append(f"{t.id} {t.cars} {t.people} | ")
+            r.append("\n")
+        return "".join(r)
+    
+    def __repr__(self):
+        return self.__str__()
