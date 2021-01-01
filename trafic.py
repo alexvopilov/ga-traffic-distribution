@@ -16,3 +16,11 @@ class Trolleybus:
         self.cars = cars
         self.people = people
 
+class Traffic:
+    def __init__(self, tbuses, days = 5, cars = 1, people = 1):
+        self.tbuses = []
+        self.days = days
+        
+        for t in tbuses:
+            self.tbuses.append(Trolleybus(id=t,cars=cars,people=people))
+            
