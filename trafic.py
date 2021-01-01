@@ -51,3 +51,10 @@ def cost(traffic, traffic_goal):
     
     cost = overtr_c * overtr + undertr_c * undertr
     return cost
+
+def generate_random_traffic(tbuses, days):
+    route_nums = (7,10,11,12,16,24,25,29,32)
+    cars = np.random.randint(1,)
+    traffic = Traffic(tbuses = route_nums, days = days, cars = cars, people = people)
+    return traffic
+
