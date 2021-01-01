@@ -24,3 +24,9 @@ class Traffic:
         for t in tbuses:
             self.tbuses.append(Trolleybus(id=t,cars=cars,people=people))
             
+    def tolist(self):
+        return [[[t.id,t.cars,t.people] for t in self.tbuses] for _ in range(self.days)]
+    
+    def toarray(self):
+        return np.array(self.tolist())
+            
