@@ -66,12 +66,27 @@ class Traffic:
     
     def toarray(self):
         return np.array(self.tolist())
+    
+    @staticmethod
+    def create(nparray,days):
+        traf_array = Traffic(ROUTES,days,random=False)
+        for d in range(len(nparray)):
+            for c in range(len(nparray[d])):
+                t = Trolleybus(id=nparray[d][c][0],cars=nparray[d][c][1],people=nparray[d][c][2])
+                traf_array.tbuses[d].append(t)
+        return traf_array
+    
+    @staticmethod
+    def to_traffics(arrays,days):
+        for i in range(len(arrays)):
+            arrays[i] = Traffic.create(arrays[i],days)
+        return arrays
             
     def __str__(self):
         r = []
-        for d in range(self.days):
+        for d in range(len(self.tbuses)):
             r.append(f"Day {d+1}: ")
-            for t in self.tbuses:
+            for t in self.tbuses[d]:
                 r.append(f"{t.id} {t.cars} {t.people} | ")
             r.append("\n")
         return "".join(r)
