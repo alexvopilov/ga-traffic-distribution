@@ -86,6 +86,23 @@ def cost(traffic, traffic_goal):
 
 # In[96]:
 
+def get_population(generation):
+    inds = dict()
+    for i in range(len(generation)):
+        for j in range(len(generation[i].tbuses)):
+            for k in range(len(generation[i].tbuses[j])):
+                t = get_tbus(generation,i,j,k)
+                key = (i,j,k)
+                value = (t.cars,t.people)
+                inds[key] = value
+    return inds
+def sort_population(individuals):
+    return sorted(individuals, key=lambda k: (individuals[k][0], individuals[k][1]))
+def get_tbus(generation,i,j,k):
+    return generation[i].tbuses[j][k]
+
+
+
 def select_best(generation, goal):
     best = {}
     for g in range(len(generation)):
