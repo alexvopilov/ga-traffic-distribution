@@ -122,6 +122,15 @@ def set_goal(days, goal_cars = 1, goal_people = 1500):
     return np.array([[[r,goal_cars,goal_people] for r in ROUTES] for _ in range(days)])
 
 
+
+
+def genetic_algorithm(generation, goal):
+    best = select_best(generation, goal)    
+    offsprings = crossover(best, 2)
+    mutants = mutate(offsprings)
+    return mutants
+
+
 # In[17]:
 
 
