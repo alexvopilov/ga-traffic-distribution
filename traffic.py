@@ -71,6 +71,18 @@ class Traffic:
 
 # In[93]:
 
+def generate_random_traffic(days, model = BKM321):
+    traffic = Traffic(tbuses = ROUTES, days = days, model = model)
+    return traffic
+
+
+def population(n, days = 7):
+    population = []
+    for _ in range(n):
+        population.append(generate_random_traffic(days))
+    return population
+
+
 
 def cost(traffic, traffic_goal):
     errors = traffic - traffic_goal
