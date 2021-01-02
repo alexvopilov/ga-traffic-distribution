@@ -118,6 +118,9 @@ def mutate(offspring):
 # In[73]:
 
 
+def set_goal(days, goal_cars = 1, goal_people = 1500):
+    return np.array([[[r,goal_cars,goal_people] for r in ROUTES] for _ in range(days)])
+
 
 # In[17]:
 
