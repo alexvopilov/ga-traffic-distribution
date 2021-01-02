@@ -209,6 +209,14 @@ def genetic_algorithm(generation, goal):
     return mutants
 
 
+goal = set_goal(days=DAYS,goal_cars=1,goal_people=1500)
+generation = population(POPULATION_COUNT,DAYS)
+_generation = generation
+
+for g in range(GENERATIONS):
+    generation = genetic_algorithm(generation,goal)
+    
+
 # In[17]:
 
 
