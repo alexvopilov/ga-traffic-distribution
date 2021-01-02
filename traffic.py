@@ -212,10 +212,21 @@ def genetic_algorithm(generation, goal):
 goal = set_goal(days=DAYS,goal_cars=1,goal_people=1500)
 generation = population(POPULATION_COUNT,DAYS)
 _generation = generation
+_fcost = 0
+acc_list = []
 
 for g in range(GENERATIONS):
     generation = genetic_algorithm(generation,goal)
     
+    #Accuracy
+    _cost = cost(select_best(generation,goal)[0].toarray(),goal)
+    if _fcost == 0:
+        _fcost = _cost
+    acc = abs(round((1 - _cost / _fcost)*100,2))
+    acc_list.append(acc)
+    
+    print(f"Generation's {g} cost: {_cost}, acc: {acc}%")
+
 
 # In[17]:
 
