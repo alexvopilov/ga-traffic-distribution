@@ -37,7 +37,7 @@ class BKM321:
 
 
 class Trolleybus:
-    def __init__(self,id,cars=0,people=0,model=BKM321):
+    def __init__(self,id,cars=1,people=1500,model=BKM321):
         self.id = id
         self.car = model()
         self.cars = cars
@@ -48,7 +48,7 @@ class Trolleybus:
 
 
 class Traffic:
-    def __init__(self, tbuses, days = 5, cars = 1, people = 1):
+    def __init__(self,tbuses,days=5,model=BKM321, random=True):
         self.tbuses = []
         self.days = days
         
