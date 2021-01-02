@@ -1,11 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[74]:
+# Популяция состоит из трафиков.  
+# Трафик состоит из периодов.  
+# Периоды включают в себя троллейбусы.  
+# Троллейбусы говорят о кол-ве машин и людях.  
+
+# In[1]:
 
 
 import numpy as np
 import pandas as pd
+
+from matplotlib import pyplot as plt
+
+
+# In[2]:
 
 
 # In[75]:
@@ -95,12 +105,11 @@ def generate_random_traffic(tbuses, days):
 
 
 
+plt.plot(acc_list)
+
 
 # In[ ]:
 
 
-goal_cars = 1
-goal_people = 1500
-goal = np.array([[[r,goal_cars,goal_people] for r in route_nums] for _ in range(days)])
-goal[0]
+
 
