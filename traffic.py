@@ -98,11 +98,14 @@ def generate_random_traffic(tbuses, days):
 
 
 
+# In[17]:
 
 
-# In[95]:
+THE_BEST = select_best(generation,goal)
+pd.DataFrame(THE_BEST[0].toarray().reshape(-1,3)[:DAYS], columns=("ID","Cars","People"))
 
 
+# In[19]:
 
 
 plt.plot(acc_list)
