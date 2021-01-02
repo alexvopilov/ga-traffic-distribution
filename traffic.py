@@ -93,6 +93,11 @@ def generate_random_traffic(tbuses, days):
     traffic = Traffic(tbuses = route_nums, days = days, cars = cars, people = people)
     return traffic
 
+def mutate(offspring):
+    for i in range(0,len(offspring),2):
+        offspring[i] = mutation(offspring[i].toarray(), 2)
+        offspring[i] = Traffic.create(offspring[i],DAYS)
+    return offspring
 
 # In[73]:
 
