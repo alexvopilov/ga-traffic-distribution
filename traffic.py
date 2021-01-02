@@ -19,6 +19,12 @@ from matplotlib import pyplot as plt
 
 
 # In[75]:
+ROUTES = (7,10,11,12,16,24,25,29,32)
+DAYS = 31
+POPULATION_COUNT = 500
+GENERATIONS = 150
+
+
 
 
 class BKM321:
