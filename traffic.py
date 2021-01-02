@@ -62,7 +62,7 @@ class Traffic:
                     self.tbuses[d].append(Trolleybus(id=t,cars=cars,people=people))
             
     def tolist(self):
-        return [[[t.id,t.cars,t.people] for t in self.tbuses] for _ in range(self.days)]
+        return [[[t.id,t.cars,t.people] for t in period] for period in self.tbuses]
     
     def toarray(self):
         return np.array(self.tolist())
@@ -112,13 +112,10 @@ def population(n, days = 7):
 
 def cost(traffic, traffic_goal):
     errors = traffic - traffic_goal
-    overtr = abs(errors[errors > 0].sum())
-    undertr = abs(errors[errors < 0].sum())
-    
-    overtr_c = 1
-    undertr_c = 1
-    
-    cost = overtr_c * overtr + undertr_c * undertr
+    cost = 0
+    for i in errors:
+        for j in i:
+            cost += abs(j[1] * j[2])
     return cost
 
 
