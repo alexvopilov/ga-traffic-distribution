@@ -52,8 +52,14 @@ class Traffic:
         self.tbuses = []
         self.days = days
         
-        for t in tbuses:
-            self.tbuses.append(Trolleybus(id=t,cars=cars,people=people))
+        for d in range(self.days):
+            self.tbuses.append([])
+            
+            if random:
+                for t in tbuses:
+                    cars = np.random.randint(1,model.count/len(ROUTES)+1)
+                    people = np.random.randint(1,cars*model.capacity+1)
+                    self.tbuses[d].append(Trolleybus(id=t,cars=cars,people=people))
             
     def tolist(self):
         return [[[t.id,t.cars,t.people] for t in self.tbuses] for _ in range(self.days)]
