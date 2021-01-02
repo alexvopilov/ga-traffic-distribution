@@ -92,6 +92,22 @@ def generate_random_traffic(tbuses, days):
     cars = np.random.randint(1,)
     traffic = Traffic(tbuses = route_nums, days = days, cars = cars, people = people)
     return traffic
+def mutation(individual, mutations_count):
+    size1 = individual.shape[0]
+    size2 = individual.shape[1]
+    for i in range(mutations_count):
+        day = np.random.randint(0, size1)
+        tbus = np.random.randint(0, size2)
+        
+        #Cars
+        d = np.random.choice((-1,1))
+        individual[day,tbus,1] += d
+        
+        #People
+        d = np.random.choice(np.arange(-5,6))
+        individual[day,tbus,2] += d
+        
+    return individual
 
 def mutate(offspring):
     for i in range(0,len(offspring),2):
