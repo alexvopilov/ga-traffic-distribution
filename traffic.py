@@ -86,12 +86,27 @@ def cost(traffic, traffic_goal):
 
 # In[96]:
 
+def crossover(parents, offspring_count):
+    parents_count = len(parents)
+    
+    offsprings = []
+    for i in range(offspring_count):
+        for j in range(parents_count):
+            parent1 = parents[np.random.randint(0, parents_count)].toarray()
+            parent2 = parents[np.random.randint(0, parents_count)].toarray()
 
-def generate_random_traffic(tbuses, days):
-    route_nums = (7,10,11,12,16,24,25,29,32)
-    cars = np.random.randint(1,)
-    traffic = Traffic(tbuses = route_nums, days = days, cars = cars, people = people)
-    return traffic
+            parent1_mask = np.random.randint(0, 2, size = parent1.shape)
+            parent2_mask = np.logical_not(parent1_mask)
+
+            offspring = np.add(np.multiply(parent1, parent1_mask), np.multiply(parent2, parent2_mask))
+            offspring = np.array(offspring)
+            offsprings.append(Traffic.create(offspring,DAYS))
+        
+    return offsprings
+
+
+
+
 def mutation(individual, mutations_count):
     size1 = individual.shape[0]
     size2 = individual.shape[1]
