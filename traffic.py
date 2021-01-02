@@ -86,6 +86,17 @@ def cost(traffic, traffic_goal):
 
 # In[96]:
 
+def select_best(generation, goal):
+    best = {}
+    for g in range(len(generation)):
+        best[g] = cost(generation[g].toarray(),goal)
+    _best = sorted(best, key=lambda k: best[k])
+    best = []
+    for b in _best[:POPULATION_COUNT//2]:
+        best.append(generation[b])
+    return best
+
+
 def crossover(parents, offspring_count):
     parents_count = len(parents)
     
