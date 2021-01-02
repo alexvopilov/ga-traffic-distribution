@@ -28,10 +28,9 @@ GENERATIONS = 150
 
 
 class BKM321:
-    def __init__(self):
-        self.seat_places = 26
-        self.capacity = 115
-        self.count = 101
+    seat_places = 26
+    capacity = 115
+    count = 101
 
 
 # In[76]:
